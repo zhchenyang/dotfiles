@@ -554,4 +554,4 @@ Plug 'lambdalisue/suda.vim' " do stuff like :sudowrite
 
 
 
-source ~/.vim/vim-init/init.vim
+let g:syntastic_r_lintr_linters = "with_defaults(assignment_linter = NULL, object_name_linter = NULL, line_length_linter(120))"
