@@ -1,5 +1,3 @@
-
-
 " ===
 " === Auto load for first time uses
 " ===
@@ -141,7 +139,7 @@ nnoremap <LEADER>tt :%s/    /\t/g
 vnoremap <LEADER>tt :s/    /\t/g
 
 " Folding
-noremap <silent> <LEADER>o za
+noremap <silent> <LEADER>f za
 
 " nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
@@ -187,48 +185,55 @@ noremap <silent> <LEADER>o za
 " ===
 " === Insert Mode Cursor Movement
 " ===
-inoremap <C-a> <ESC>A
-
+"inoremap <C-a> <ESC>A
+"inoremap <C-a> <Home>
+"inoremap <C-e> <End>
+"inoremap <C-p> <Up>
+"inoremap <C-n> <Down>
+"inoremap <C-b> <Left>
+"inoremap <C-f> <Right>
+"inoremap <M-b> <S-Left>
+"inoremap <M-w> <S-Right>
 
 " ===
 " === Command Mode Cursor Movement
 " ===
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-w> <S-Right>
+" cnoremap <C-a> <Home>
+" cnoremap <C-e> <End>
+" cnoremap <C-p> <Up>
+" cnoremap <C-n> <Down>
+" cnoremap <C-b> <Left>
+" cnoremap <C-f> <Right>
+" cnoremap <M-b> <S-Left>
+" cnoremap <M-w> <S-Right>
 
 
 " ===
 " === Searching
 " ===
-noremap - N
-noremap = n
+" noremap - N
+" noremap = n
 
 
 " ===
 " === Window management
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
-noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
-noremap <LEADER>i <C-w>l
-noremap qf <C-w>o
+" noremap <LEADER>w <C-w>w
+" noremap <LEADER>u <C-w>k
+" noremap <LEADER>e <C-w>j
+" noremap <LEADER>n <C-w>h
+" noremap <LEADER>i <C-w>l
+" noremap qf <C-w>o
 
 " Disable the default s key
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap se :set splitbelow<CR>:split<CR>
-noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+" noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+" noremap se :set splitbelow<CR>:split<CR>
+" noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+" noremap si :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 "noremap <up> :res +5<CR>
@@ -237,29 +242,29 @@ noremap si :set splitright<CR>:vsplit<CR>
 "noremap <right> :vertical resize+5<CR>
 
 " Place the two screens up and down
-noremap sh <C-w>t<C-w>K
+" noremap sh <C-w>t<C-w>K
 " Place the two screens side by side
-noremap sv <C-w>t<C-w>H
+" noremap sv <C-w>t<C-w>H
 
 " Rotate screens
-noremap srh <C-w>b<C-w>K
-noremap srv <C-w>b<C-w>H
+" noremap srh <C-w>b<C-w>K
+" noremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
-noremap <LEADER>q <C-w>j:q<CR>
+" noremap <LEADER>q <C-w>j:q<CR>
 
 
 " ===
 " === Tab management
 " ===
 " Create a new tab with tu
-noremap tu :tabe<CR>
+" noremap tu :tabe<CR>
 " Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
+" noremap tn :-tabnext<CR>
+" noremap ti :+tabnext<CR>
 " Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+" noremap tmn :-tabmove<CR>
+" noremap tmi :+tabmove<CR>
 
 
 " ===
@@ -268,40 +273,40 @@ noremap tmi :+tabmove<CR>
 " Snippets
 "source $XDG_CONFIG_HOME/nvim/md-snippets.vim
 " auto spell
-autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
 " === Other useful stuff
 " ===
 " Open a new instance of st with the cwd
-nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+" nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " Opening a terminal window
-noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+" noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
-noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+" noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
-noremap <LEADER>sc :set spell!<CR>
+" noremap <LEADER>sc :set spell!<CR>
 
 " Press ` to change case (instead of ~)
-noremap ` ~
+" noremap ` ~
 
-noremap <C-c> zz
+" noremap <C-c> zz
 
 " Auto change directory to current dir
 "autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet 
+" noremap tx :r !figlet 
 
 " find and replace
-noremap \s :%s//g<left><left>
+" noremap \s :%s//g<left><left>
 
 " set wrap
-noremap <LEADER>sw :set wrap<CR>
+" noremap <LEADER>sw :set wrap<CR>
 
 " press f10 to show hlgroup
 function! SynGroup()
@@ -311,49 +316,49 @@ endfun
 map <F10> :call SynGroup()<CR>
 
 " Compile function
-noremap r :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
-		:sp
-		:res -15
-		:term ./%<
-	elseif &filetype == 'java'
-		set splitbelow
-		:sp
-		:res -5
-		term javac % && time java %<
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
-		silent! exec "CocCommand flutter.dev.openDevLog"
-	elseif &filetype == 'javascript'
-		set splitbelow
-		:sp
-		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
-	endif
-endfunc
+" noremap r :call CompileRunGcc()<CR>
+" func! CompileRunGcc()
+" 	exec "w"
+" 	if &filetype == 'c'
+" 		exec "!g++ % -o %<"
+" 		exec "!time ./%<"
+" 	elseif &filetype == 'cpp'
+" 		set splitbelow
+" 		exec "!g++ -std=c++11 % -Wall -o %<"
+" 		:sp
+" 		:res -15
+" 		:term ./%<
+" 	elseif &filetype == 'java'
+" 		set splitbelow
+" 		:sp
+" 		:res -5
+" 		term javac % && time java %<
+" 	elseif &filetype == 'sh'
+" 		:!time bash %
+" 	elseif &filetype == 'python'
+" 		set splitbelow
+" 		:sp
+" 		:term python3 %
+" 	elseif &filetype == 'html'
+" 		silent! exec "!".g:mkdp_browser." % &"
+" 	elseif &filetype == 'markdown'
+" 		exec "InstantMarkdownPreview"
+" 	elseif &filetype == 'tex'
+" 		silent! exec "VimtexStop"
+" 		silent! exec "VimtexCompile"
+" 	elseif &filetype == 'dart'
+" 		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+" 		silent! exec "CocCommand flutter.dev.openDevLog"
+" 	elseif &filetype == 'javascript'
+" 		set splitbelow
+" 		:sp
+" 		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+" 	elseif &filetype == 'go'
+" 		set splitbelow
+" 		:sp
+" 		:term go run .
+" 	endif
+" endfunc
 
 
 " ===
@@ -402,7 +407,7 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
 Plug 'wellle/tmux-complete.vim'
 
@@ -711,21 +716,21 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 

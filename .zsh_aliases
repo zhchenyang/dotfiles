@@ -1,5 +1,5 @@
 alias len='wc -l'
 alias ran='ranger'
-alias rs='Rscript'
+#alias rs='Rscript'
 alias o='xdg-open .'
 alias v='code .'

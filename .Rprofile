@@ -1,3 +1,8 @@
+options(
+  conflicts.policy = FALSE,    # 不提示包之间的冲突
+  max.print = 1000)
+
+
 options(repos = c(CRAN = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(useFancyQuotes = FALSE)
 options(error = function() {
@@ -16,14 +21,18 @@ options(error = function() {
     q(status = 1)
   }
 })
+
 options(languageserver.formatting_style = function(options) {
   styler::tidyverse_style(scope = "indention", indent_by = options$tabSize)
 })
 
-options(datatable.quiet = TRUE,
+options(
+  datatable.quiet = TRUE,
   datatable.print.class = TRUE,
   datatable.print.keys = TRUE)
+
 options(future.rng.onMisuse = "ignore")
+
 
 if (interactive() && Sys.getenv("RSTUDIO") == "") {
   Sys.setenv(TERM_PROGRAM = "vscode")
