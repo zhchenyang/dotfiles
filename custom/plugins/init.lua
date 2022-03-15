@@ -1,4 +1,5 @@
 return {
+  -- 平滑滚动
   {
     "karb94/neoscroll.nvim",
      opt = true,
@@ -16,6 +17,6 @@ return {
     keys = {'i', 'a', 'I', 'A', 'c', 'o', 'O'},
   },
   {
-    "glepnir/dashboard-nvim"
+    "github/copilot.vim"
   }
 }
