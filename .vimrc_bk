@@ -1,68 +1,145 @@
-" ===== Basic settings =====
-" 在当前目录下以安全模式读入 .vimrc
+" ===
+" === Auto load for first time uses
+" ===
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+" 清除背景色
+let &t_ut=''
+ 
+" 如果打开，Vim 会在你打开文件、切换缓冲区、删除缓冲区或者打开/关闭窗口
+" 时改变当前工作目录的值。具体来说，就是打开或者选择的文件所在的目录。
+" 注意: 打开此选项会使得某些插件无法工作。
+set autochdir
+
+" ===
+" === Editor behavior
+" ===
+" 包含初始化命令的文件叫做 "vimrc" 文件。vimrc 文件的每一行都作为 Ex 命令执行。
+set exrc
 set secure
-" 显示行号
 set number
-" 显示相对行号
 set relativenumber
-" 高亮光标所在行
 set cursorline
-" 当缓冲区被放弃 ( abandon ) 时不卸载之
 set hidden
-" indent 缩进
+set noexpandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set autoindent
-set smartindent
-" 显示 tab 符号
-" set list
-" mapping 不检查超时
+set list
+set listchars=tab:\|\ ,trail:▫
+set scrolloff=4
+set ttimeoutlen=0
 set notimeout
-" 长行 wrap
+set viewoptions=cursor,folds,slash,unix
 set wrap
-" ?得到一行的缩进位置的表达式
 set indentexpr=
-
-" 折叠 按照缩进位置
 set foldmethod=indent
-" 设置为显示所用打开的折叠
+set foldlevel=99
 set foldenable
-" 自动排版完成的方式
 set formatoptions-=tc
-
-" 在状态行上显示补全内容
+set splitright
+set splitbelow
+set noshowmode
+set showcmd
 set wildmenu
-
-" 不区分大小写
 set ignorecase
 set smartcase
+set shortmess+=c
+" set inccommand=split
+set completeopt=longest,noinsert,menuone,noselect,preview
+set ttyfast "should make scrolling faster
+set lazyredraw "same as above
+set visualbell
+silent !mkdir -p ~/.vim/tmp/backup
+silent !mkdir -p ~/.vim/tmp/undo
+"silent !mkdir -p ~/.vim/tmp/sessions
+set backupdir=~/.vim/tmp/backup,.
+set directory=~/.vim/tmp/backup,.
+if has('persistent_undo')
+	set undofile
+	set undodir=~/.vim/tmp/undo,.
+endif
+set colorcolumn=100
+set updatetime=100
+set virtualedit=block
+
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" ===
+" === Terminal Behaviors
+" ===
+let g:neoterm_autoscroll = 1
+"autocmd TermOpen term://* startinsert
+tnoremap <C-N> <C-\><C-N>
+tnoremap <C-O> <C-\><C-N><C-O>
+let g:terminal_color_0  = '#000000'
+let g:terminal_color_1  = '#FF5555'
+let g:terminal_color_2  = '#50FA7B'
+let g:terminal_color_3  = '#F1FA8C'
+let g:terminal_color_4  = '#BD93F9'
+let g:terminal_color_5  = '#FF79C6'
+let g:terminal_color_6  = '#8BE9FD'
+let g:terminal_color_7  = '#BFBFBF'
+let g:terminal_color_8  = '#4D4D4D'
+let g:terminal_color_9  = '#FF6E67'
+let g:terminal_color_10 = '#5AF78E'
+let g:terminal_color_11 = '#F4F99D'
+let g:terminal_color_12 = '#CAA9FA'
+let g:terminal_color_13 = '#FF92D0'
+let g:terminal_color_14 = '#9AEDFE'
 
 
-" 高亮显示匹配的括号
-set showmatch
-
-
-" ===== Basic mapping =====
-
-" set leader 
+" ===
+" === Basic Mappings
+" ===
+" Set <LEADER> as <SPACE>, ; as :
 let mapleader=" "
-nnoremap <SPACE> <Nop>
+" noremap ; :
 
-" save and quit
+" Save & quit
 noremap Q :q<CR>
+noremap <C-q> :qa<CR>
 noremap S :w<CR>
 
-" Copy
+" Open the vimrc file anytime
+noremap <LEADER>rc :e ~/.vim/init.vim<CR>
+noremap <LEADER>rv :e .vimrc<CR>
+
+" Undo operations
+" noremap l u
+
+" Insert Key
+" noremap k i
+" noremap K I
+
+" make Y to copy till the end of the line
 nnoremap Y y$
+
+" Copy to system clipboard
 vnoremap Y "+y
 
-" Indentatoin
+" Indentation
 nnoremap < <<
 nnoremap > >>
 
+" Search
+noremap <LEADER><CR> :nohlsearch<CR>
+
+" Adjacent duplicate words
+noremap <LEADER>dw /\(\<\w\+\>\)\_s*\1
+
+" Space to Tab
+nnoremap <LEADER>tt :%s/    /\t/g
+vnoremap <LEADER>tt :s/    /\t/g
+
 " Folding
-noremap <silent> <LEADER>f za
+noremap <silent> <LEADER>o za
 
 " nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
@@ -108,55 +185,48 @@ noremap <silent> <LEADER>f za
 " ===
 " === Insert Mode Cursor Movement
 " ===
-"inoremap <C-a> <ESC>A
-"inoremap <C-a> <Home>
-"inoremap <C-e> <End>
-"inoremap <C-p> <Up>
-"inoremap <C-n> <Down>
-"inoremap <C-b> <Left>
-"inoremap <C-f> <Right>
-"inoremap <M-b> <S-Left>
-"inoremap <M-w> <S-Right>
+inoremap <C-a> <ESC>A
+
 
 " ===
 " === Command Mode Cursor Movement
 " ===
-" cnoremap <C-a> <Home>
-" cnoremap <C-e> <End>
-" cnoremap <C-p> <Up>
-" cnoremap <C-n> <Down>
-" cnoremap <C-b> <Left>
-" cnoremap <C-f> <Right>
-" cnoremap <M-b> <S-Left>
-" cnoremap <M-w> <S-Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-w> <S-Right>
 
 
 " ===
 " === Searching
 " ===
-" noremap - N
-" noremap = n
+noremap - N
+noremap = n
 
 
 " ===
 " === Window management
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
-" noremap <LEADER>w <C-w>w
-" noremap <LEADER>u <C-w>k
-" noremap <LEADER>e <C-w>j
-" noremap <LEADER>n <C-w>h
-" noremap <LEADER>i <C-w>l
-" noremap qf <C-w>o
+noremap <LEADER>w <C-w>w
+noremap <LEADER>u <C-w>k
+noremap <LEADER>e <C-w>j
+noremap <LEADER>n <C-w>h
+noremap <LEADER>i <C-w>l
+noremap qf <C-w>o
 
 " Disable the default s key
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-" noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-" noremap se :set splitbelow<CR>:split<CR>
-" noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-" noremap si :set splitright<CR>:vsplit<CR>
+noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap se :set splitbelow<CR>:split<CR>
+noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap si :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 "noremap <up> :res +5<CR>
@@ -165,29 +235,29 @@ noremap s <nop>
 "noremap <right> :vertical resize+5<CR>
 
 " Place the two screens up and down
-" noremap sh <C-w>t<C-w>K
+noremap sh <C-w>t<C-w>K
 " Place the two screens side by side
-" noremap sv <C-w>t<C-w>H
+noremap sv <C-w>t<C-w>H
 
 " Rotate screens
-" noremap srh <C-w>b<C-w>K
-" noremap srv <C-w>b<C-w>H
+noremap srh <C-w>b<C-w>K
+noremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
-" noremap <LEADER>q <C-w>j:q<CR>
+noremap <LEADER>q <C-w>j:q<CR>
 
 
 " ===
 " === Tab management
 " ===
 " Create a new tab with tu
-" noremap tu :tabe<CR>
+noremap tu :tabe<CR>
 " Move around tabs with tn and ti
-" noremap tn :-tabnext<CR>
-" noremap ti :+tabnext<CR>
+noremap tn :-tabnext<CR>
+noremap ti :+tabnext<CR>
 " Move the tabs with tmn and tmi
-" noremap tmn :-tabmove<CR>
-" noremap tmi :+tabmove<CR>
+noremap tmn :-tabmove<CR>
+noremap tmi :+tabmove<CR>
 
 
 " ===
@@ -196,40 +266,40 @@ noremap s <nop>
 " Snippets
 "source $XDG_CONFIG_HOME/nvim/md-snippets.vim
 " auto spell
-" autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " ===
 " === Other useful stuff
 " ===
 " Open a new instance of st with the cwd
-" nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
+nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 
 " Opening a terminal window
-" noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
-" noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " Spelling Check with <space>sc
-" noremap <LEADER>sc :set spell!<CR>
+noremap <LEADER>sc :set spell!<CR>
 
 " Press ` to change case (instead of ~)
-" noremap ` ~
+noremap ` ~
 
-" noremap <C-c> zz
+noremap <C-c> zz
 
 " Auto change directory to current dir
 "autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-" noremap tx :r !figlet 
+noremap tx :r !figlet 
 
 " find and replace
-" noremap \s :%s//g<left><left>
+noremap \s :%s//g<left><left>
 
 " set wrap
-" noremap <LEADER>sw :set wrap<CR>
+noremap <LEADER>sw :set wrap<CR>
 
 " press f10 to show hlgroup
 function! SynGroup()
@@ -239,49 +309,49 @@ endfun
 map <F10> :call SynGroup()<CR>
 
 " Compile function
-" noremap r :call CompileRunGcc()<CR>
-" func! CompileRunGcc()
-" 	exec "w"
-" 	if &filetype == 'c'
-" 		exec "!g++ % -o %<"
-" 		exec "!time ./%<"
-" 	elseif &filetype == 'cpp'
-" 		set splitbelow
-" 		exec "!g++ -std=c++11 % -Wall -o %<"
-" 		:sp
-" 		:res -15
-" 		:term ./%<
-" 	elseif &filetype == 'java'
-" 		set splitbelow
-" 		:sp
-" 		:res -5
-" 		term javac % && time java %<
-" 	elseif &filetype == 'sh'
-" 		:!time bash %
-" 	elseif &filetype == 'python'
-" 		set splitbelow
-" 		:sp
-" 		:term python3 %
-" 	elseif &filetype == 'html'
-" 		silent! exec "!".g:mkdp_browser." % &"
-" 	elseif &filetype == 'markdown'
-" 		exec "InstantMarkdownPreview"
-" 	elseif &filetype == 'tex'
-" 		silent! exec "VimtexStop"
-" 		silent! exec "VimtexCompile"
-" 	elseif &filetype == 'dart'
-" 		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
-" 		silent! exec "CocCommand flutter.dev.openDevLog"
-" 	elseif &filetype == 'javascript'
-" 		set splitbelow
-" 		:sp
-" 		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-" 	elseif &filetype == 'go'
-" 		set splitbelow
-" 		:sp
-" 		:term go run .
-" 	endif
-" endfunc
+noremap r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+		set splitbelow
+		:sp
+		:res -5
+		term javac % && time java %<
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "InstantMarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	elseif &filetype == 'dart'
+		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+		silent! exec "CocCommand flutter.dev.openDevLog"
+	elseif &filetype == 'javascript'
+		set splitbelow
+		:sp
+		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run .
+	endif
+endfunc
 
 
 " ===
@@ -330,7 +400,7 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
 
 " Auto Complete
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.79'}
 Plug 'wellle/tmux-complete.vim'
 
@@ -639,30 +709,29 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 
 
-" insert line
-nnoremap <LEADER>o o<ESC>
-nnoremap <LEADER>O O<ESC>
+augroup vimrc-incsearch-hightlight
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
-" ====== regex ======
-" TODO
-"   1. trans 'key': value
-"   2. (v2, v1) -> (v1, v2)
+source ~/.vim/vim-init/init.vim
