@@ -373,7 +373,7 @@ M.plugins = {
 }
 ```
 ```lua
--- /lua/custom/plugins/config.lua file
+-- /lua/custom/plugins/configs.lua file
 
 local M = {}
 

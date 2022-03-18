@@ -29,10 +29,10 @@ M.ui = {
 
 -- Install plugins
 
+-- local plugin_conf = require "custom.plugins.configs"
 local userPlugins = require "custom.plugins" -- path to table
 
 M.plugins = {
-   install = userPlugins,
    status = {
       blankline = true, -- indentline stuff
       bufferline = true, -- manage and preview opened buffers
@@ -57,8 +57,22 @@ M.plugins = {
       },
    },
    default_plugin_config_replace = {
-     dashboard = "custom.plugins.dashboard",
+     -- nvim_treesitter = {
+       -- ensure_install = {
+         -- 'json',
+         -- 'html',
+         -- 'bash',
+       -- },
+     -- },
+     -- nvim_treesitter = plugin_conf.treesitter,
+     -- dashboard = "custom.plugins.dashboard",
+     -- cmp = {
+     --   mapping = {
+     --     ['<CR>'] = cmp.maping.confirm({ select = false })
+     --   },
+     -- },
    },
+   install = userPlugins,
    default_plugin_remove = {},
 }
 return M
