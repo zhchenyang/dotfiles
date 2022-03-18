@@ -31,5 +31,7 @@ map('n', 'K', '5k')
 
 -- 自动切换输入法配置
 vim.o.ttimeoutlen=0
+vim.g.python3_host_prog = '/usr/local/Caskroom/miniconda/base/envs/ds/bin/python'
+
 
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
