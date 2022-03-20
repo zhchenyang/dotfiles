@@ -68,7 +68,7 @@ M.plugins = {
       },
       nvim_cmp = {
          mapping = {
-            ['<CR>'] = cmp.mapping.confirm({ select = false })
+            ['<CR>'] = cmp.mapping.confirm({ select = true })
          }
       }
    },
