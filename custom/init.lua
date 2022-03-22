@@ -22,8 +22,8 @@ map('n', '<left>', ':vertical resize-5<CR>')
 map('n', '<right>', ':vertical resize+5<CR>')
 
 -- 快速移动
-map('n', 'J', '5j')
-map('n', 'K', '5k')
+map('n', 'J', '<C-d>')
+map('n', 'K', '<C-u>')
 
 -- copilot
 --  imap <silent><script><expr> <C-L> copilot#Accept()

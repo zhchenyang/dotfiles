@@ -4,7 +4,12 @@ return {
     "karb94/neoscroll.nvim",
      opt = true,
      config = function()
-        require("neoscroll").setup()
+        require("neoscroll").setup({
+          mappings = {
+            '<C-u>', '<C-d>', '<C-b>', '<C-f>',
+            '<C-y>', '<C-e>', 'zt', 'zz', 'zb',
+          },
+        })
      end,
 
      -- lazy loading
@@ -33,5 +38,8 @@ return {
        }
        require("telescope").load_extension "media_files"
     end,
+  },
+  {
+    "sillybun/vim-repl"
   }
 }
