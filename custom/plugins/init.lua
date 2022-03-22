@@ -41,5 +41,9 @@ return {
   },
   {
     "sillybun/vim-repl"
-  }
+  },
+  {
+    -- mac os 输入法切换
+    "rlue/vim-barbaric"
+  },
 }

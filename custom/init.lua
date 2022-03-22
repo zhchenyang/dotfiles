@@ -40,3 +40,12 @@ vim.g.python3_host_prog = '/usr/local/Caskroom/miniconda/base/envs/ds/bin/python
 -- vim.g.copilot_no_tab_map = true
 
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
+
+-- macos 输入法切换
+-- requires xkbswitch-macosx
+-- curl -o /usr/local/bin/xkbswitch https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
+vim.g.barbaric_ime = 'macos'
+vim.g.barbaric_default = 0
+vim.g.barbaric_scope = 'buffer'
+vim.g.barbaric_timeout = '-1'
+
