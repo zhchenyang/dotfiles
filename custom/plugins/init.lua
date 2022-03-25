@@ -39,11 +39,27 @@ return {
        require("telescope").load_extension "media_files"
     end,
   },
-  {
-    "sillybun/vim-repl"
-  },
+  -- {
+    --  not supported neovim
+  --   "sillybun/vim-repl"
+  -- },
   {
     -- mac os 输入法切换
     "rlue/vim-barbaric"
+  },
+  {
+    -- surround
+    "tpope/vim-surround"
+  },
+  {
+    -- 快速选中
+    "gcmt/wildfire.vim",
+    keys = "<CR>",
+  },
+  -- {
+  --   "vim-pandoc/vim-pandoc"
+  -- },
+  {
+    'kassio/neoterm'
   },
 }

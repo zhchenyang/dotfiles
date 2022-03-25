@@ -49,3 +49,15 @@ vim.g.barbaric_default = 0
 vim.g.barbaric_scope = 'buffer'
 vim.g.barbaric_timeout = '-1'
 
+
+-- R markdown
+vim.g.markdown_fenced_langues = {'python'}
+vim.g.rmd_fenced_languages = {"r", "python"}
+vim.g.rmd_syn_hl_chunk = 1
+
+-- Neoterm repl
+vim.g.neoterm_default_mod = 'vertical'
+vim.g.neoterm_repl_python = {
+  'conda activate ds', 'clear', 'ipython'
+}
+vim.g.neoterm_repl_enable_ipython_paste_magic = 1
