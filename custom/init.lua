@@ -45,7 +45,7 @@ vim.g.python3_host_prog = '/home/gfk/anaconda3/envs/rbase/bin/python'
 -- requires xkbswitch-macosx
 -- curl -o /usr/local/bin/xkbswitch https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
 vim.g.barbaric_ime = 'fcitx'
-vim.g.barbaric_default = 0
+vim.g.barbaric_default = '-o'
 vim.g.barbaric_scope = 'buffer'
 vim.g.barbaric_timeout = '-1'
 vim.g.barbaric_fcitx_cmd = 'fcitx-remote'
