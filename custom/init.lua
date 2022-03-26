@@ -36,7 +36,7 @@ map('n', 'K', '<C-u>')
 
 -- 自动切换输入法配置
 vim.o.ttimeoutlen=0
-vim.g.python3_host_prog = '/usr/local/Caskroom/miniconda/base/envs/ds/bin/python'
+vim.g.python3_host_prog = '/home/gfk/anaconda3/envs/rbase/bin/python'
 -- vim.g.copilot_no_tab_map = true
 
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
@@ -44,10 +44,13 @@ vim.g.python3_host_prog = '/usr/local/Caskroom/miniconda/base/envs/ds/bin/python
 -- macos 输入法切换
 -- requires xkbswitch-macosx
 -- curl -o /usr/local/bin/xkbswitch https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
-vim.g.barbaric_ime = 'macos'
+vim.g.barbaric_ime = 'fcitx'
 vim.g.barbaric_default = 0
 vim.g.barbaric_scope = 'buffer'
 vim.g.barbaric_timeout = '-1'
+vim.g.barbaric_fcitx_cmd = 'fcitx-remote'
+-- fcitx-remote status on: 1 off:2
+-- fcitx-remote -o close, -c open
 
 
 -- R markdown
