@@ -22,7 +22,7 @@ M.options = {
 }
 
 M.ui = {
-   theme = "tokyodark",
+   theme = "onedark",
    transparency = false,
 }
 ---- PLUGIN OPTIONS ----

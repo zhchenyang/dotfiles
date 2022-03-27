@@ -28,7 +28,10 @@ map('n', 'K', '<C-u>')
 -- copilot
 --  imap <silent><script><expr> <C-L> copilot#Accept()
 --  let g:copilot_no_tab_map = v:true
--- map('i', '<C-i>', 'copilot#Accept' )
+map('i', '<C-b>', 'copilot#Accept()', { script = true, expr = true, silent = true} )
+vim.g.copilot_no_tab_map = 1
+-- TODO
+-- fix cmp and copilot conflict
 
 
 -------------------按键映射---------------------
@@ -37,7 +40,6 @@ map('n', 'K', '<C-u>')
 -- 自动切换输入法配置
 vim.o.ttimeoutlen=0
 vim.g.python3_host_prog = '/usr/local/Caskroom/miniconda/base/envs/ds/bin/python'
--- vim.g.copilot_no_tab_map = true
 
 -- NOTE: the 4th argument in the map function is be a table i.e options but its most likely un-needed so dont worry about it
 
