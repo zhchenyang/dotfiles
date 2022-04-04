@@ -33,6 +33,15 @@ vim.g.copilot_no_tab_map = 1
 -- TODO
 -- fix cmp and copilot conflict
 
+-- neoterm config
+map('n', '<leader><leader>', ':Ttoggle<CR>')
+map('n', '<leader><Enter>', ':TREPLSendLine<CR>')
+map('v', '<C-j>', ':TREPLSendSelection<CR>')
+map('n', 'gx', '<Plug>(neoterm-repl-send)')
+map('v', 'gx', '<Plug>(neoterm-repl-send)')
+map('n', 'gn', '<Plug>(neoterm-repl-send-line)')
+map('v', 'gn', '<Plug>(neoterm-repl-send-line)')
+
 
 -------------------按键映射---------------------
 -------------------杂项配置---------------------
@@ -60,6 +69,17 @@ vim.g.rmd_syn_hl_chunk = 1
 -- Neoterm repl
 vim.g.neoterm_default_mod = 'vertical'
 vim.g.neoterm_repl_python = {
-  'conda activate ds', 'clear', 'ipython'
+  'conda activate ds', 'ipython'
 }
 vim.g.neoterm_repl_enable_ipython_paste_magic = 1
+vim.g.neoterm_bracketed_paste = 1
+vim.g.neoterm_repl_command = {
+  'conda activate ds', 'radian'
+}
+
+-- abbr
+local cmd = vim.cmd
+cmd [[iabbr 点点点 ...]]
+cmd [[iabbr teh the]]
+cmd [[iabbr 小点 .]]
+cmd [[iabbr 反引号 ``<Left>]]
