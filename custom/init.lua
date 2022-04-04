@@ -36,11 +36,10 @@ vim.g.copilot_no_tab_map = 1
 -- neoterm config
 map('n', '<leader><leader>', ':Ttoggle<CR>')
 map('n', '<leader><Enter>', ':TREPLSendLine<CR>')
-map('v', '<C-j>', ':TREPLSendSelection<CR>')
-map('n', 'gx', '<Plug>(neoterm-repl-send)')
-map('v', 'gx', '<Plug>(neoterm-repl-send)')
-map('n', 'gn', '<Plug>(neoterm-repl-send-line)')
-map('v', 'gn', '<Plug>(neoterm-repl-send-line)')
+map('v', '<leader><Enter>', ':TREPLSendSelection<CR>')
+-- map('n', 'gx', '<Plug>(neoterm-repl-send)') map('v', 'gx', '<Plug>(neoterm-repl-send)')
+-- map('n', 'gn', '<Plug>(neoterm-repl-send-line)')
+-- map('v', 'gn', '<Plug>(neoterm-repl-send-line)')
 
 
 -------------------按键映射---------------------
