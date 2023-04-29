@@ -1,0 +1,7 @@
+linters: with_defaults(
+  line_length_linter(120),         # 单行至多 120 字符
+  assignment_linter = NULL,        # 可以使用 = 赋值
+  commented_code_linter = NULL,
+  seq_linter = NULL,
+  single_quotes_linter = NULL
+  )
